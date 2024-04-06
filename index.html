@@ -1,21 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Morphism Arc with Empty Center</title>
+<style>
+    body {
+        background-image: url(./images/Background.png);
+        background-repeat: no-repeat;
+    }
+
+    .grid-arcs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        transform: rotate(45deg);
+    }
+
+    .top, .left, .right, .bottom {
+        transition: 0.3s ease-in-out;
+    }
+
+    .top:hover {
+        transform: translate(-10px, -10px);
+        transition: 0.3s ease-in-out;
+    }
+
+    .right:hover {
+        transform: translate(10px, -10px);
+        transition: 0.3s ease-in-out;
+    }
+
+    .bottom:hover {
+        transform: translate(10px, 10px);
+        transition: 0.3s ease-in-out;
+    }
+
+    .left:hover {
+        transform: translate(-10px, 10px);
+        transition: 0.3s ease-in-out;
+    }
+
+    .arc:hover {
+        border: 2px solid transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0 orange;
+        animation: glow 1s infinite alternate;
+        border-radius: 0 0 0 100%;
+    }
+
+    @keyframes glow {
+    from {
+        box-shadow: 0 0 10px 0 orange inset;
+    }
+    to {
+        box-shadow: 0 0 20px 5px orange inset;
+    }
+    }   
+
+    #one {
+        transform: rotate(90deg);
+    }
+
+    #two {
+        transform: rotate(180deg);
+    }
+
+    #three {
+        transform: rotate(360deg);
+    }
+
+    #four {
+        transform: rotate(270deg);
+    }
+
+  .arc {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 0 0 0 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    overflow: hidden;
+  }
+
+  .arc {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden; /* Hide any content overflowing the arc */
+    }
+
+    .arc::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent; /* Make the background transparent */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(-90px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%; /* Rounded border */
+    bottom: 50%; /* Adjust this to target the desired corner */
+    left: 50%; /* Adjust this to target the desired corner */
+    }
+
+
+  .cut-out {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 2;
+  }
+
+  /* Optional styling for demonstration */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .mbappe {
+    position: absolute;
+    align-self: center;
+    transform: rotate(-45deg);
+    width: 100%;
+    height: 70%;
+    border-radius: 50%;
+    z-index: 1;
+    overflow: visible;
+    pointer-events: none;
+  }
+</style>
 </head>
 <body>
-    <div class="weapon-wheel">
-        <div class="arc arc1"></div>
-        <div class="arc arc2"></div>
-        <div class="arc arc3"></div>
-        <div class="arc arc4"></div>
-        <div class="weapon-option" id="weapon1">Weapon 1</div>
-        <div class="weapon-option" id="weapon2">Weapon 2</div>
-        <div class="weapon-option" id="weapon3">Weapon 3</div>
-        <div class="weapon-option" id="weapon4">Weapon 4</div>
-      </div>            
+    <div class="grid-arcs">
+        <img class="mbappe" src="./images/mbappe.svg" alt="mbappe" />
+
+        <div class="move top">
+            <div class="arc" id="one">
+            <div class="cut-out"></div>
+            </div>
+        </div>
+
+        <div class="move right">
+            <div class="arc" id="two">
+                <div class="cut-out"></div>
+            </div>
+        </div>
+
+        <div class="move left">
+            <div class="arc" id="three">
+                <div class="cut-out"></div>
+            </div>
+        </div>
+
+        <div class="move bottom">
+            <div class="arc" id="four">
+                <div class="cut-out"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -14,10 +14,27 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         transform: rotate(45deg);
+        gap: 5px;
     }
 
     .top, .left, .right, .bottom {
         transition: 0.3s ease-in-out;
+    }
+
+    .top {
+        border-radius: 100% 0 0 0;
+    }
+
+    .right {
+        border-radius: 0 100% 0 0;
+    }
+
+    .bottom {
+        border-radius: 0 0 100% 0;
+    }
+
+    .left {
+        border-radius: 0 0 0 100%;
     }
 
     .top:hover {
@@ -45,7 +62,7 @@
         border-radius: 5px;
         box-shadow: 0 0 10px 0 orange;
         animation: glow 1s infinite alternate;
-        border-radius: 0 0 0 100%;
+        border-radius: 4% 0 4% 100%;
     }
 
     @keyframes glow {
@@ -77,9 +94,9 @@
     position: relative;
     width: 200px;
     height: 200px;
-    border-radius: 0 0 0 100%;
+    border-radius: 3% 0 3% 100%;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -88,8 +105,8 @@
 
   .arc {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 15rem;
+    height: 15rem;
     overflow: hidden; /* Hide any content overflowing the arc */
     }
 
@@ -109,20 +126,32 @@
     }
 
 
-  .cut-out {
+  .cut-out-top, .cut-out-bottom, .cut-out-left, .cut-out-right {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
+    width: 4rem;
+    height: 4rem;
     background: transparent;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.18);
     z-index: 2;
   }
 
-  /* Optional styling for demonstration */
+  .cut-out-top {
+    transform: translate(-50%, -50%) rotate(-135deg);  
+  }   
+
+  .cut-out-right {
+    transform: translate(-50%, -50%) rotate(135deg);  
+  }
+
+  .cut-out-left {
+    transform: translate(-50%, -50%) rotate(-45deg);  
+  }
+
+  .cut-out-bottom {
+    transform: translate(-50%, -50%) rotate(45deg);  
+  }
+
   body {
     display: flex;
     justify-content: center;
@@ -131,31 +160,45 @@
     margin: 0;
     background-color: #f0f0f0;
   }
+
+  .mbappe {
+    position: absolute;
+    align-self: center;
+    transform: rotate(-45deg);
+    width: 100%;
+    height: 70%;
+    border-radius: 50%;
+    z-index: 1;
+    overflow: visible;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
     <div class="grid-arcs">
+        <img class="mbappe" src="./images/mbappe.svg" alt="mbappe" />
+
         <div class="move top">
             <div class="arc" id="one">
-            <div class="cut-out"></div>
+                <img class="cut-out-top" src="./images/addcontact.svg" />
             </div>
         </div>
 
         <div class="move right">
             <div class="arc" id="two">
-                <div class="cut-out"></div>
+                <img class="cut-out-right" src="./images/statistic.svg" />
             </div>
         </div>
 
         <div class="move left">
             <div class="arc" id="three">
-                <div class="cut-out"></div>
+                <img class="cut-out-left" src="./images/donate.svg" />
             </div>
         </div>
 
         <div class="move bottom">
             <div class="arc" id="four">
-                <div class="cut-out"></div>
+                <img class="cut-out-bottom" src="./images/checklist.svg" />
             </div>
         </div>
     </div>
