@@ -14,7 +14,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         transform: rotate(45deg);
-        gap: 5px;
     }
 
     .top, .left, .right, .bottom {
@@ -63,6 +62,7 @@
         box-shadow: 0 0 10px 0 orange;
         animation: glow 1s infinite alternate;
         border-radius: 4% 0 4% 100%;
+        margin: 0;
     }
 
     @keyframes glow {
@@ -95,11 +95,8 @@
     width: 200px;
     height: 200px;
     border-radius: 3% 0 3% 100%;
+    margin: 5px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
     overflow: hidden;
   }
 
@@ -107,7 +104,7 @@
     position: relative;
     width: 15rem;
     height: 15rem;
-    overflow: hidden; /* Hide any content overflowing the arc */
+    overflow: hidden; 
     }
 
     .arc::before {
@@ -115,14 +112,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: transparent; /* Make the background transparent */
+    background: transparent; 
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(-90px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 50%; /* Rounded border */
-    bottom: 50%; /* Adjust this to target the desired corner */
-    left: 50%; /* Adjust this to target the desired corner */
+    border-radius: 50%; 
+    bottom: 50%; 
+    left: 50%; 
     }
 
 
